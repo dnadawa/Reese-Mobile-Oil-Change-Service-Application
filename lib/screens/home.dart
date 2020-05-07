@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server/gmail.dart';
+import 'package:mpoil/screens/checkout.dart';
 import 'package:mpoil/widgets/button.dart';
 import 'package:mpoil/widgets/custom-text.dart';
 import 'package:mpoil/widgets/toast.dart';
@@ -37,7 +40,7 @@ class _HomeState extends State<Home> {
     try {
         final sendReport = await send(message, smtpServer);
         print('Message sent: ' + sendReport.toString());
-        ToastBar(text: 'Email sent!',color: Colors.green).show();
+        ToastBar(text: 'Schedule Successful!',color: Colors.blue.shade900).show();
       } on MailerException catch (e) {
       ToastBar(text: 'Email not sent!',color: Colors.red).show();
         print('Message not sent.');
@@ -111,7 +114,10 @@ class _HomeState extends State<Home> {
     ScreenUtil.init(context, width: 720, height: 1520,allowFontScaling: false);
     return Scaffold(
       appBar: AppBar(
-        title: CustomText(text: 'Home',color: Colors.black,),
+        title: Text(
+          'Home',
+          style: GoogleFonts.merriweather(fontWeight: FontWeight.bold,fontSize: 25),
+        ),
         centerTitle: true,
         elevation: 0,
       ),
@@ -129,7 +135,7 @@ class _HomeState extends State<Home> {
                 text: 'Schedule your oil change from the convenience of your home and we will come to you',
                 size: ScreenUtil().setSp(40),
               ),
-              SizedBox(height: ScreenUtil().setHeight(50),),
+              SizedBox(height: ScreenUtil().setHeight(65),),
               GestureDetector(
                 onTap: () async {
                   picked = await showDatePicker(
@@ -140,7 +146,7 @@ class _HomeState extends State<Home> {
                   print(picked);
                 },
                 child: Container(
-                  width: ScreenUtil().setWidth(500),
+                  width: ScreenUtil().setWidth(400),
                   height: ScreenUtil().setHeight(120),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
@@ -161,7 +167,7 @@ class _HomeState extends State<Home> {
                 ),
               ),
               Padding(
-                padding:  EdgeInsets.fromLTRB(ScreenUtil().setWidth(35), ScreenUtil().setWidth(55), ScreenUtil().setWidth(35), 0),
+                padding:  EdgeInsets.fromLTRB(ScreenUtil().setWidth(35), ScreenUtil().setWidth(65), ScreenUtil().setWidth(35), 0),
                 child: Container(
                   height: ScreenUtil().setHeight(120),
                   width: double.infinity,
@@ -301,14 +307,27 @@ class _HomeState extends State<Home> {
                             //"$oilList";
 
                         for(int i=0;i<oilList.length;i++){
-                          message += '${oilList[i]}\n';
+                          message += '\t• ${oilList[i]}\n';
+                        }
+                        var finalPrice;
+                        if(price=="Platinum service- basic oil change most cars \$65"){
+                          finalPrice = 6500;
+                        }
+                        else if(price=="Silver service- over 75k miles- \$110"){
+                          finalPrice = 11000;
+                        }
+                        else{
+                          finalPrice = 15500;
                         }
 
+
                         print(message);
-                        sendMail(message);
+                        //sendMail(message);
+                        Navigator.push(context, CupertinoPageRoute(builder: (context){
+                          return Checkout(message: message,price: finalPrice,);}));
                       }
                       else{
-                        ToastBar(text: 'Data not Found!',color: Colors.red).show();
+                        ToastBar(text: 'We are sorry! We haven\'t any oil for this category!',color: Colors.red).show();
                       }
 
                     }

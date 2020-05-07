@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:mpoil/screens/home.dart';
 import 'package:mpoil/screens/login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main(){
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  String email;
+  getData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      email = prefs.getString('email');
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Color(0xffFFEB3B)
       ),
-      home: LogIn(),
+      home: email==null?LogIn():Home(),
     );
   }
 }
