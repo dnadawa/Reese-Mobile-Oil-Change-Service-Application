@@ -28,28 +28,6 @@ class _HomeState extends State<Home> {
   List<DropdownMenuItem<String>> models = [];
   List<DropdownMenuItem<String>> engines = [];
 
-  sendMail(String messageToSend) async {
-    String username = 'mpoilservice14@gmail.com';
-    String password = 'admin@MPoil123';
-    final smtpServer = gmail(username, password);
-    final message = Message()
-        ..from = Address(username, 'Reese Mobile Oil Change Service')
-        ..recipients.add('damienkenway61@gmail.com')
-        ..subject = 'New Order'
-        ..text = messageToSend;
-    try {
-        final sendReport = await send(message, smtpServer);
-        print('Message sent: ' + sendReport.toString());
-        ToastBar(text: 'Schedule Successful!',color: Colors.blue.shade900).show();
-      } on MailerException catch (e) {
-      ToastBar(text: 'Email not sent!',color: Colors.red).show();
-        print('Message not sent.');
-        for (var p in e.problems) {
-          print('Problem: ${p.code}: ${p.msg}');
-        }
-      }
-  }
-
   getMake() async {
     var makeSub = await Firestore.instance.collection('make').getDocuments();
     var makeList = makeSub.documents;
@@ -150,7 +128,8 @@ class _HomeState extends State<Home> {
                   height: ScreenUtil().setHeight(120),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Theme.of(context).primaryColor
+                    color: Color(0xffFF8A65),
+                    border: Border.all(color: Colors.white,width: 3)
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

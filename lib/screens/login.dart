@@ -47,6 +47,7 @@ class LogIn extends StatelessWidget {
   Widget build(BuildContext context) {
     ScreenUtil.init(context, width: 720, height: 1520,allowFontScaling: false);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(

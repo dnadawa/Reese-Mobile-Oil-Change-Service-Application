@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Color(0xffFFEB3B)
+        primaryColor: Color(0xffFF5131)
       ),
       home: email==null?LogIn():Home(),
     );

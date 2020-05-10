@@ -5,6 +5,8 @@ import 'package:flutter_credit_card/credit_card_model.dart';
 import 'package:flutter_credit_card/credit_card_widget.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server/gmail.dart';
 import 'package:mpoil/widgets/button.dart';
 import 'package:mpoil/widgets/toast.dart';
 import 'package:stripe_payment/stripe_payment.dart';
@@ -36,6 +38,28 @@ class _CheckoutState extends State<Checkout> {
       cvvCode = creditCardModel.cvvCode;
       isCvvFocused = creditCardModel.isCvvFocused;
     });
+  }
+
+  sendMail(String messageToSend) async {
+    String username = 'mpoilservice14@gmail.com';
+    String password = 'admin@MPoil123';
+    final smtpServer = gmail(username, password);
+    final message = Message()
+      ..from = Address(username, 'Reese Mobile Oil Change Service')
+      ..recipients.add('damienkenway61@gmail.com')
+      ..subject = 'New Order'
+      ..text = messageToSend;
+    try {
+      final sendReport = await send(message, smtpServer);
+      print('Message sent: ' + sendReport.toString());
+      ToastBar(text: 'Schedule Successful!',color: Colors.blue.shade900).show();
+    } on MailerException catch (e) {
+      ToastBar(text: 'Email not sent!',color: Colors.red).show();
+      print('Message not sent.');
+      for (var p in e.problems) {
+        print('Problem: ${p.code}: ${p.msg}');
+      }
+    }
   }
 
   @override
@@ -118,6 +142,7 @@ class _CheckoutState extends State<Checkout> {
 
                         if(response.statusCode == 200){
                           await ToastBar(text: 'Payment Completed!',color: Colors.green).show();
+                          sendMail(widget.message);
                           Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context){
                             return Home();}));
                         }
