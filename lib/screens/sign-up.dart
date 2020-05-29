@@ -34,6 +34,8 @@ class SignUp extends StatelessWidget {
 
         email.clear();
         password.clear();
+        location.clear();
+        name.clear();
         ToastBar(color: Colors.green,text: 'Signed Up Successfully!').show();
       }
       catch(E){
