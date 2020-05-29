@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
+import 'package:mpoil/screens/login.dart';
 import 'package:mpoil/widgets/button.dart';
 import 'package:mpoil/widgets/custom-text.dart';
 import 'package:mpoil/widgets/input-field.dart';
@@ -90,6 +91,12 @@ class SignUp extends StatelessWidget {
                       SizedBox(height: ScreenUtil().setHeight(30),),
                       InputField(hint: 'Location',controller: location,),
                       SizedBox(height: ScreenUtil().setHeight(70),),
+                      GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, CupertinoPageRoute(builder: (context){
+                              return LogIn();}));
+                          },
+                          child: CustomText(text: 'Log in',size: ScreenUtil().setSp(35),)),
                     ],
                   ),
                 ),
