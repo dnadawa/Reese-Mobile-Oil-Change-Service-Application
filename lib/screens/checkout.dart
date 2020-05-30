@@ -41,12 +41,12 @@ class _CheckoutState extends State<Checkout> {
   }
 
   sendMail(String messageToSend) async {
-    String username = 'mpoilservice14@gmail.com';
-    String password = 'admin@MPoil123';
+    String username = 'reeseoil123@gmail.com';
+    String password = 'Admin@reese';
     final smtpServer = gmail(username, password);
     final message = Message()
       ..from = Address(username, 'Reese Mobile Oil Change Service')
-      ..recipients.add('damienkenway61@gmail.com')
+      ..recipients.add('reeseoilchange@gmail.com')
       ..subject = 'New Order'
       ..text = messageToSend;
     try {
@@ -156,7 +156,7 @@ class _CheckoutState extends State<Checkout> {
                     });
                   }
                   catch(e){
-
+                    ToastBar(text: 'Something went Wrong While Processing the Payment',color: Colors.red).show();
                   }
                 },)),
           ],
