@@ -1,34 +1,63 @@
 {
   "project_info": {
-    "project_number": "283529567402",
-    "firebase_url": "https://reese-oil.firebaseio.com",
-    "project_id": "reese-oil",
-    "storage_bucket": "reese-oil.appspot.com"
+    "project_number": "819237530045",
+    "firebase_url": "https://oil-app-e99a8.firebaseio.com",
+    "project_id": "oil-app-e99a8",
+    "storage_bucket": "oil-app-e99a8.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:283529567402:android:93d7b532aaad00898484d3",
+        "mobilesdk_app_id": "1:819237530045:android:47f051c76f28a7ab0f8ad4",
         "android_client_info": {
-          "package_name": "com.digiwrecks.reeseoil"
+          "package_name": "com.digiwrecks.oilapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "283529567402-7o7nd3eirll39eq4nan4766i8aris25s.apps.googleusercontent.com",
+          "client_id": "819237530045-jn3ogs3l2ivcgshrm1cnf9kqqqhaii3n.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDyiE_aQe3bKRPhQCikjE48cTy5WHdU96w"
+          "current_key": "AIzaSyAglLkwN1FWbpApbfLELxKuNbyBJHBkG3o"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "283529567402-7o7nd3eirll39eq4nan4766i8aris25s.apps.googleusercontent.com",
+              "client_id": "819237530045-jn3ogs3l2ivcgshrm1cnf9kqqqhaii3n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819237530045:android:ad463dcab3de02010f8ad4",
+        "android_client_info": {
+          "package_name": "com.digiwrecks.reeseoil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "819237530045-jn3ogs3l2ivcgshrm1cnf9kqqqhaii3n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAglLkwN1FWbpApbfLELxKuNbyBJHBkG3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "819237530045-jn3ogs3l2ivcgshrm1cnf9kqqqhaii3n.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

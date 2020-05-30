@@ -1,4 +1,4 @@
-package com.digiwrecks.reeseoil;
+package com.digiwrecks.oilapp;
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity;
