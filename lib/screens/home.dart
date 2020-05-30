@@ -110,8 +110,21 @@ class _HomeState extends State<Home> {
           child: Column(
             children: <Widget>[
               CustomText(
-                text: 'Schedule your oil change from the convenience of your home and we will come to you',
+                text: 'Schedule your oil change from the convenience of your home and we will come to you.',
                 size: ScreenUtil().setSp(40),
+              ),
+              SizedBox(height: ScreenUtil().setHeight(25),),
+              Container(
+                color: Color(0xffFEF8D4),
+                width: double.infinity,
+                height: ScreenUtil().setHeight(50),
+                child: Center(
+                  child: CustomText(
+                    text: 'Refer friends and recieve discounts.',
+                    size: ScreenUtil().setSp(30),
+                    color: Colors.black,
+                  ),
+                ),
               ),
               SizedBox(height: ScreenUtil().setHeight(65),),
               GestureDetector(

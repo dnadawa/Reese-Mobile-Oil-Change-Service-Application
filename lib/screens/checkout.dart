@@ -46,7 +46,7 @@ class _CheckoutState extends State<Checkout> {
     final smtpServer = gmail(username, password);
     final message = Message()
       ..from = Address(username, 'Reese Mobile Oil Change Service')
-      ..recipients.add('damienkenway61@gmail.com')
+      ..recipients.add('reeseoilchange@gmail.com')
       ..subject = 'New Order'
       ..text = messageToSend;
     try {
@@ -156,7 +156,7 @@ class _CheckoutState extends State<Checkout> {
                     });
                   }
                   catch(e){
-
+                    ToastBar(text: 'Something went Wrong While Processing the Payment',color: Colors.red).show();
                   }
                 },)),
           ],
