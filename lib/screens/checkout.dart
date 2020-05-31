@@ -41,8 +41,8 @@ class _CheckoutState extends State<Checkout> {
   }
 
   sendMail(String messageToSend) async {
-    String username = 'reeseoil123@gmail.com';
-    String password = 'Admin@reese';
+    String username = 'johnkenway90@gmail.com';
+    String password = 'Admin@oil';
     final smtpServer = gmail(username, password);
     final message = Message()
       ..from = Address(username, 'Reese Mobile Oil Change Service')
